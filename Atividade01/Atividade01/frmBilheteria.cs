@@ -7,9 +7,13 @@ namespace Atividade01
 
         private Label lblMapaOcupacao;
         private Label lblFaturamento;
-        private CheckBox[,] cbxOcupacao;
-        private Button btnFaturamento;
+        private Label lblMapaFileira;
+        private Label lblMapaPoltronas;
 
+        private CheckBox[,] cbxOcupacao;
+
+        private Button btnFaturamento;
+       
         public frmBilheteria()
         {
             InitializeComponent();
@@ -28,7 +32,7 @@ namespace Atividade01
             lblMapaOcupacao = new Label();
             lblMapaOcupacao.Text = "Mapa de ocupação:";
             lblMapaOcupacao.Name = "lblMapaOcupacao";
-            lblMapaOcupacao.Top = 10;
+            lblMapaOcupacao.Top = 5;
             lblMapaOcupacao.Left = 5;
             lblMapaOcupacao.Width = 120;
             lblMapaOcupacao.Parent = this;
@@ -40,33 +44,53 @@ namespace Atividade01
 
             for (int i = 0; i < FILEIRAS; i++)
             {
+                CreateLblFileira(i);
+
                 for (int j = 0; j < POLTRONAS; j++)
                 {
                     cbxOcupacao[i, j] = new CheckBox();
-                    cbxOcupacao[i, j].Top = (i * 20) + 30;
-                    cbxOcupacao[i, j].Left = (j * 30) + 10;
-                    cbxOcupacao[i, j].Width = 20;
+                    cbxOcupacao[i, j].Top = (i * 20) + 40;
+                    cbxOcupacao[i, j].Left = (j * 30) + 25;
+                    cbxOcupacao[i, j].Width = 15;
                     cbxOcupacao[i, j].Tag = $"{i};{j}";
                     cbxOcupacao[i, j].Name = $"cbxOcupacao{i}_{j}";
-
-                    //if (j == 0)
-                    //{
-                    //    cbxOcupacao[i, j].RightToLeft = RightToLeft.Yes;
-                    //    cbxOcupacao[i, j].Text = (i + 1).ToString();
-                    //}
-
                     cbxOcupacao[i, j].Parent = this;
 
+                    if (i == 0)
+                    {
+                        CreateLblPoltrona(j);
+                    }
                 }
             }
         }
 
+        private void CreateLblPoltrona(int indexPoltrona)
+        {
+            lblMapaPoltronas = new Label();
+            lblMapaPoltronas.Top = 25;
+            lblMapaPoltronas.Left = (indexPoltrona * 30) + 25;
+            lblMapaPoltronas.Width = 20;
+            lblMapaPoltronas.Name = "lblMapaPoltronas";
+            lblMapaPoltronas.Text = (indexPoltrona + 1).ToString();
+            lblMapaPoltronas.Parent = this;
+        }
+
+        private void CreateLblFileira(int indexFileira)
+        {
+            lblMapaFileira = new Label();
+            lblMapaFileira.Text = (indexFileira + 1).ToString();
+            lblMapaFileira.Name = "lblMapaFileira";
+            lblMapaFileira.Top = (indexFileira * 20) + 45;
+            lblMapaFileira.Left = 5;
+            lblMapaFileira.Width = 20;
+            lblMapaFileira.Parent = this;
+        }
         private void CreateBtnFaturamento()
         {
             btnFaturamento = new Button();
             btnFaturamento.Text = "Verificar faturamento";
             btnFaturamento.Name = "btnFaturamento";
-            btnFaturamento.Top = 340;
+            btnFaturamento.Top = 350;
             btnFaturamento.Left = 5;
             btnFaturamento.Width = 180;
             btnFaturamento.Click += new EventHandler(BtnFaturamentoClick);
@@ -85,10 +109,10 @@ namespace Atividade01
                     {
                         qtdLugaresOcupados++;
 
-                        if (i >= 0 && i <= 5)
+                        if (i >= 0 && i < 5)
                         {
                             valorFaturamento += 50;
-                        } else if (i >= 6 && i <= 10) {
+                        } else if (i >= 5 && i < 10) {
                             valorFaturamento += 30;
                         }
                         else
@@ -109,13 +133,13 @@ namespace Atividade01
             {
                 lblFaturamento = new Label();
                 lblFaturamento.TextAlign = ContentAlignment.MiddleLeft;
-                lblFaturamento.Top = 340;
+                lblFaturamento.Top = 350;
                 lblFaturamento.Left = 190;
                 lblFaturamento.Width = 600;
                 lblFaturamento.Parent = this;
             }
 
-            lblFaturamento.Text = $"Qtde de lugares ocupados: {qtdLugaresOcupados}  - Valor da bilheteria: {valorFaturamento.ToString("c2")}";
+            lblFaturamento.Text = $"Qtde de lugares ocupados: {qtdLugaresOcupados} - Valor da bilheteria: {valorFaturamento.ToString("c2")}";
         }
     }
 }

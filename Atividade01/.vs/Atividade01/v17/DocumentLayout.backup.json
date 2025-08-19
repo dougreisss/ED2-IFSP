@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "F:\\Douglas\\IFSP\\ED2-IFSP\\Atividade01\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{27E0661A-2A49-451A-9139-BCB94319A1E5}|Atividade01\\Atividade01.csproj|F:\\Douglas\\IFSP\\ED2-IFSP\\Atividade01\\atividade01\\frmbilheteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{27E0661A-2A49-451A-9139-BCB94319A1E5}|Atividade01\\Atividade01.csproj|solutionrelative:atividade01\\frmbilheteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{27E0661A-2A49-451A-9139-BCB94319A1E5}|Atividade01\\Atividade01.csproj|f:\\douglas\\ifsp\\ed2-ifsp\\atividade01\\atividade01\\frmbilheteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{27E0661A-2A49-451A-9139-BCB94319A1E5}|Atividade01\\Atividade01.csproj|solutionrelative:atividade01\\frmbilheteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E0661A-2A49-451A-9139-BCB94319A1E5}|Atividade01\\Atividade01.csproj|f:\\douglas\\ifsp\\ed2-ifsp\\atividade01\\atividade01\\frmbilheteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{27E0661A-2A49-451A-9139-BCB94319A1E5}|Atividade01\\Atividade01.csproj|solutionrelative:atividade01\\frmbilheteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmBilheteria.cs",
+              "Title": "frmBilheteria.cs [Projeto]",
               "DocumentMoniker": "F:\\Douglas\\IFSP\\ED2-IFSP\\Atividade01\\Atividade01\\frmBilheteria.cs",
               "RelativeDocumentMoniker": "Atividade01\\frmBilheteria.cs",
-              "ToolTip": "F:\\Douglas\\IFSP\\ED2-IFSP\\Atividade01\\Atividade01\\frmBilheteria.cs*",
-              "RelativeToolTip": "Atividade01\\frmBilheteria.cs*",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAWwG4AAAApAAAAAAAAAA==",
+              "ToolTip": "F:\\Douglas\\IFSP\\ED2-IFSP\\Atividade01\\Atividade01\\frmBilheteria.cs [Projeto]",
+              "RelativeToolTip": "Atividade01\\frmBilheteria.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-18T22:23:33.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-19T02:13:34.716Z",
+              "EditorCaption": " [Projeto]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmBilheteria.cs [Projeto]",
+              "Title": "frmBilheteria.cs",
               "DocumentMoniker": "F:\\Douglas\\IFSP\\ED2-IFSP\\Atividade01\\Atividade01\\frmBilheteria.cs",
               "RelativeDocumentMoniker": "Atividade01\\frmBilheteria.cs",
-              "ToolTip": "F:\\Douglas\\IFSP\\ED2-IFSP\\Atividade01\\Atividade01\\frmBilheteria.cs [Projeto]*",
-              "RelativeToolTip": "Atividade01\\frmBilheteria.cs [Projeto]*",
+              "ToolTip": "F:\\Douglas\\IFSP\\ED2-IFSP\\Atividade01\\Atividade01\\frmBilheteria.cs",
+              "RelativeToolTip": "Atividade01\\frmBilheteria.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAmwGIAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-18T22:19:40.334Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2025-08-18T22:23:33.95Z",
+              "EditorCaption": ""
             }
           ]
         }
