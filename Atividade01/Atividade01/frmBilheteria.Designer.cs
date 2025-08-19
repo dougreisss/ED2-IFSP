@@ -34,7 +34,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1217, 380);
+            ClientSize = new Size(1208, 380);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmBilheteria";

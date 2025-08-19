@@ -43,7 +43,7 @@ namespace Atividade01
                 for (int j = 0; j < POLTRONAS; j++)
                 {
                     cbxOcupacao[i, j] = new CheckBox();
-                    cbxOcupacao[i, j].Top = (i * 20) + 40;
+                    cbxOcupacao[i, j].Top = (i * 20) + 30;
                     cbxOcupacao[i, j].Left = (j * 30) + 10;
                     cbxOcupacao[i, j].Width = 20;
                     cbxOcupacao[i, j].Tag = $"{i};{j}";
@@ -61,17 +61,12 @@ namespace Atividade01
             }
         }
 
-        private void CbxOcupacaoClick(object sender, EventArgs e)
-        {
-            // todo
-        }
-
         private void CreateBtnFaturamento()
         {
             btnFaturamento = new Button();
             btnFaturamento.Text = "Verificar faturamento";
-            btnFaturamento.Name = "BtnFaturamento";
-            btnFaturamento.Top = 345;
+            btnFaturamento.Name = "btnFaturamento";
+            btnFaturamento.Top = 340;
             btnFaturamento.Left = 5;
             btnFaturamento.Width = 180;
             btnFaturamento.Click += new EventHandler(BtnFaturamentoClick);
@@ -80,18 +75,47 @@ namespace Atividade01
         private void BtnFaturamentoClick(object sender, EventArgs e)
         {
             decimal valorFaturamento = 0;
-            CreateLblFaturamento(valorFaturamento);
+            int qtdLugaresOcupados = 0;
+
+            for (int i = 0; i < FILEIRAS; i++)
+            {
+                for (int j = 0; j < POLTRONAS; j++)
+                {
+                    if (cbxOcupacao[i, j].Checked)
+                    {
+                        qtdLugaresOcupados++;
+
+                        if (i >= 0 && i <= 5)
+                        {
+                            valorFaturamento += 50;
+                        } else if (i >= 6 && i <= 10) {
+                            valorFaturamento += 30;
+                        }
+                        else
+                        {
+                            valorFaturamento += 15;
+                        }
+                    }
+                }
+            }
+
+            CreateLblFaturamento(valorFaturamento, qtdLugaresOcupados);
+
         }
 
-        private void CreateLblFaturamento(decimal valorFaturamento)
+        private void CreateLblFaturamento(decimal valorFaturamento, int qtdLugaresOcupados)
         {
-            lblFaturamento = new Label();
-            lblFaturamento.Text = $"Valor total do faturamento: {valorFaturamento.ToString("c2")}";
-            lblFaturamento.TextAlign = ContentAlignment.BottomCenter;
-            lblFaturamento.Top = 340;
-            lblFaturamento.Left = 190;
-            lblFaturamento.Width = 200;
-            lblFaturamento.Parent = this;
+            if (lblFaturamento == null)
+            {
+                lblFaturamento = new Label();
+                lblFaturamento.TextAlign = ContentAlignment.MiddleLeft;
+                lblFaturamento.Top = 340;
+                lblFaturamento.Left = 190;
+                lblFaturamento.Width = 600;
+                lblFaturamento.Parent = this;
+            }
+
+            lblFaturamento.Text = $"Qtde de lugares ocupados: {qtdLugaresOcupados}  - Valor da bilheteria: {valorFaturamento.ToString("c2")}";
         }
     }
 }
