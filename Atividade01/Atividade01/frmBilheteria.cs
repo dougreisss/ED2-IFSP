@@ -1,3 +1,5 @@
+// Dupla: Douglas Reis - CB3022722 e Gabriel Chaves - CB302024X
+
 namespace Atividade01
 {
     public partial class frmBilheteria : Form
@@ -126,14 +128,14 @@ namespace Atividade01
             CreateLblFaturamento(valorFaturamento, qtdLugaresOcupados);
 
         }
-
+         
         private void CreateLblFaturamento(decimal valorFaturamento, int qtdLugaresOcupados)
         {
             if (lblFaturamento == null)
             {
                 lblFaturamento = new Label();
                 lblFaturamento.TextAlign = ContentAlignment.MiddleLeft;
-                lblFaturamento.Top = 350;
+                lblFaturamento.Top = 350; 
                 lblFaturamento.Left = 190;
                 lblFaturamento.Width = 600;
                 lblFaturamento.Parent = this;
