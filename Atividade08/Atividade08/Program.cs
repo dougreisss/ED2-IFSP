@@ -26,37 +26,40 @@ while (opcaoMenu != 0)
 
 	switch (opcaoMenu)
 	{
-		case (int)OpcoesMenu.Sair:
+		case (int)OpcoesMenuEnum.Sair:
 			Sair();
 			break;
-		case (int)OpcoesMenu.AdicionarProjeto:
+		case (int)OpcoesMenuEnum.AdicionarProjeto:
 			AdicionarProjeto();
             break;
-		case (int)OpcoesMenu.PesquisarProjeto:
+		case (int)OpcoesMenuEnum.PesquisarProjeto:
 			PesquisarProjeto();
             break;
-		case (int)OpcoesMenu.RemoverProjeto:
+		case (int)OpcoesMenuEnum.RemoverProjeto:
 			RemoverProjeto();
             break;
-		case (int)OpcoesMenu.AdicionarTarefa:
+		case (int)OpcoesMenuEnum.AdicionarTarefa:
 			AdicionarTarefa();
             break;
-		case (int)OpcoesMenu.ConcluirTarefa:
+		case (int)OpcoesMenuEnum.ConcluirTarefa:
 			ConcluirTarefa();
             break;
-		case (int)OpcoesMenu.CancelarTarefa:
+		case (int)OpcoesMenuEnum.CancelarTarefa:
 			CancelarTarefa();
             break;
-		case (int)OpcoesMenu.ReabrirTarefa:
+		case (int)OpcoesMenuEnum.ReabrirTarefa:
 			ReabrirTarefa();
             break;
-		case (int)OpcoesMenu.ListarTarefasEmSomenteProjeto:
+		case (int)OpcoesMenuEnum.ListarTarefasEmSomenteProjeto:
+			ListarTarefasEmProjeto();
 			break;
-		case (int)OpcoesMenu.FiltrarTarefasEmSomenteProjeto:
-			break;
-		case (int)OpcoesMenu.FiltrarTarefasEmProjetos:
-			break;                      
-		case (int)OpcoesMenu.ResumoGeral:
+		case (int)OpcoesMenuEnum.FiltrarTarefasEmSomenteProjeto:
+			FiltrarTarefasEmProjeto();
+            break;
+		case (int)OpcoesMenuEnum.FiltrarTarefasEmProjetos:
+			FiltrarTarefasEmProjetos();
+            break;                      
+		case (int)OpcoesMenuEnum.ResumoGeral:
 			ResumoGeral();
             break;
 		default:
@@ -199,6 +202,129 @@ void ReabrirTarefa()
     Console.WriteLine($"Tarefa do id {tarefaEncontrada.Id} cancelada com sucesso!");
 }
 
+void ListarTarefasEmProjeto()
+{
+    Projeto projetoEncontrado = BuscarProjeto();
+
+	ListarTarefas(projetoEncontrado.Tarefas);
+}
+
+void FiltrarTarefasEmProjeto()
+{
+	int opcaoFiltro = 0;
+
+    Projeto projetoEncontrado = BuscarProjeto();
+
+    Console.WriteLine("Digite 1 para filtrar tarefas por status");
+	Console.WriteLine("Digite 2 para filtrar tarefas por prioridade");
+	opcaoFiltro = int.Parse(Console.ReadLine());
+
+	switch (opcaoFiltro)
+	{
+		case 1:
+			ListarTarefasPorStatus(projetoEncontrado);
+            break;
+		case 2:
+			ListarTarefasPorPrioridade(projetoEncontrado);
+			break;
+		default:
+			Console.WriteLine("Opção invalida");
+			break;
+	}
+}
+
+void ListarTarefasPorStatus(Projeto projeto)
+{
+	string status = "";
+
+	Console.WriteLine("Digite o status: ");
+	status = Console.ReadLine();
+
+	List<Tarefa> tarefasPorStatus = projeto.TarefasPorStatus(status);
+
+	ListarTarefas(tarefasPorStatus);
+}
+
+void ListarTarefasPorPrioridade(Projeto projeto)
+{
+	int prioridade = 0;
+
+	Console.WriteLine("Digite a prioridade: ");
+	prioridade = int.Parse(Console.ReadLine());
+
+	List<Tarefa> tarefasPorPrioridade = projeto.TarefasPorPrioridade(prioridade);
+
+    ListarTarefas(tarefasPorPrioridade);
+}
+
+void ListarTarefas(List<Tarefa> tarefas)
+{
+    foreach (var tarefa in tarefas)
+    {
+        Console.WriteLine(tarefa.ToString());
+    }
+}
+
+void ListarProjetosTarefasPorStatus()
+{
+    string status = "";
+
+    Console.WriteLine("Digite o status: ");
+    status = Console.ReadLine();
+
+    foreach (var projeto in projetos.Itens)
+	{
+		Console.WriteLine($"Projeto {projeto.Id}");
+		List<Tarefa> tarefasPorStatus = new List<Tarefa>();
+
+        tarefasPorStatus = projeto.TarefasPorStatus(status);
+
+        ListarTarefas(tarefasPorStatus);
+    }
+}
+
+void ListarProjetosTarefasPorPrioridade()
+{
+  
+    int prioridade = 0;
+
+    Console.WriteLine("Digite a prioridade: ");
+    prioridade = int.Parse(Console.ReadLine());
+
+    foreach (var projeto in projetos.Itens)
+    {
+        Console.WriteLine($"Projeto {projeto.Id}");
+        List<Tarefa> tarefasPorPrioridade = new List<Tarefa>();
+
+        tarefasPorPrioridade = projeto.TarefasPorPrioridade(prioridade);
+
+		ListarTarefas(tarefasPorPrioridade);
+    }
+}
+
+void FiltrarTarefasEmProjetos()
+{
+    int opcaoFiltro = 0;
+
+    Console.WriteLine("Digite 1 para filtrar tarefas por status");
+    Console.WriteLine("Digite 2 para filtrar tarefas por prioridade");
+
+    opcaoFiltro = int.Parse(Console.ReadLine());
+
+    switch (opcaoFiltro)
+    {
+        case 1:
+            ListarProjetosTarefasPorStatus();
+            break;
+        case 2:
+            ListarProjetosTarefasPorPrioridade();
+            break;
+        default:
+            Console.WriteLine("Opção invalida");
+            break;
+    }
+}
+
 void ResumoGeral()
 {
 
@@ -214,5 +340,4 @@ void ResumoGeral()
     Console.WriteLine($"Quantidade total de tarefas fechadas: {totalFechadas}");
     Console.WriteLine($"Quantidade total de tarefas canceladas: {totalCanceladas}");
     Console.WriteLine($"Percentual de tarefas concluídas em relação às abertas: {percentualConcluidas:F2}%");
-
 }

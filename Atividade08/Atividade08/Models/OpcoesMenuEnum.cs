@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Atividade08.Models
 {
-    public enum OpcoesMenu
+    public enum OpcoesMenuEnum
     {
         Sair = 0,
         AdicionarProjeto = 1,

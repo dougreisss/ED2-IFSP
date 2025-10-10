@@ -55,9 +55,10 @@ namespace Atividade08.Models
 
         public override string ToString()
         {
+            
             string resultadoFormatado = $"Id: {Id} " +
                                         $"- Descrição: {Descricao} " +
-                                        $"- Prioridade: {Prioridade} " +
+                                        $"- Prioridade: {(PrioridadeEnum)Prioridade} " +
                                         $"- Status: {Status}" +
                                         $"\nData de criação: {DataCriacao.ToString("G")} " +
                                         $"- Data de conclusão: {DataConclusao?.ToString("G") ?? "-"}";
