@@ -1,0 +1,14 @@
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\bin\Debug\net8.0\projMedicamento.exe
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\bin\Debug\net8.0\projMedicamento.deps.json
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\bin\Debug\net8.0\projMedicamento.runtimeconfig.json
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\bin\Debug\net8.0\projMedicamento.dll
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\bin\Debug\net8.0\projMedicamento.pdb
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\projMedicamento.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\projMedicamento.AssemblyInfoInputs.cache
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\projMedicamento.AssemblyInfo.cs
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\projMedicamento.csproj.CoreCompileInputs.cache
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\projMedicamento.dll
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\refint\projMedicamento.dll
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\projMedicamento.pdb
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\projMedicamento.genruntimeconfig.cache
+C:\Users\aluno\source\repos\projMedicamento\projMedicamento\obj\Debug\net8.0\ref\projMedicamento.dll
