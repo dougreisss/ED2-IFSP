@@ -1,0 +1,14 @@
+C:\Users\gabri\source\repos\Atividade11\Atividade11\bin\Debug\net10.0\Atividade11.exe
+C:\Users\gabri\source\repos\Atividade11\Atividade11\bin\Debug\net10.0\Atividade11.deps.json
+C:\Users\gabri\source\repos\Atividade11\Atividade11\bin\Debug\net10.0\Atividade11.runtimeconfig.json
+C:\Users\gabri\source\repos\Atividade11\Atividade11\bin\Debug\net10.0\Atividade11.dll
+C:\Users\gabri\source\repos\Atividade11\Atividade11\bin\Debug\net10.0\Atividade11.pdb
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\Atividade11.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\Atividade11.AssemblyInfoInputs.cache
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\Atividade11.AssemblyInfo.cs
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\Atividade11.csproj.CoreCompileInputs.cache
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\Atividade11.dll
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\refint\Atividade11.dll
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\Atividade11.pdb
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\Atividade11.genruntimeconfig.cache
+C:\Users\gabri\source\repos\Atividade11\Atividade11\obj\Debug\net10.0\ref\Atividade11.dll
