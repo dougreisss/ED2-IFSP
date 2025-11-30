@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -7,7 +8,10 @@ using System.Text.Json;
 namespace Atividade11.Model
 {
     public class Cadastro
-    {
+    {   
+
+        private const string CONNECTION_STRING = "Server=DESKTOP-VQ6H075;Database=TPLOG;Trusted_Connection=True;";
+
         // - usuarios: List<Usuario>
         public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
         // - ambientes: List<Ambiente>
@@ -83,36 +87,61 @@ namespace Atividade11.Model
         // + upload(): void - Realizar a persistência dos dados quando a aplicação for encerrada
         public void Upload()
         {
-            var options = new JsonSerializerOptions { WriteIndented = true };
+            using (var conn = new SqlConnection(CONNECTION_STRING))
+            {
+                conn.Open();
 
-            // Salva Usuários
-            string jsonUsuarios = JsonSerializer.Serialize(Usuarios, options);
-            File.WriteAllText(USUARIOS_FILE, jsonUsuarios);
+                // Exemplo para usuários
+                foreach (var usuario in Usuarios)
+                {
+                    var cmd = new SqlCommand("INSERT INTO Usuarios (Id, Nome) VALUES (@Id, @Nome)", conn);
+                    cmd.Parameters.AddWithValue("@Id", usuario.Id);
+                    cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
+                    cmd.ExecuteNonQuery();
+                }
 
-            // Salva Ambientes
-            string jsonAmbientes = JsonSerializer.Serialize(Ambientes, options);
-            File.WriteAllText(AMBIENTES_FILE, jsonAmbientes);
+                // Exemplo para ambientes
+                foreach (var ambiente in Ambientes)
+                {
+                    var cmd = new SqlCommand("INSERT INTO Ambientes (Id, Nome) VALUES (@Id, @Nome)", conn);
+                    cmd.Parameters.AddWithValue("@Id", ambiente.Id);
+                    cmd.Parameters.AddWithValue("@Nome", ambiente.Nome);
+                    cmd.ExecuteNonQuery();
+                }
+            }
 
             Console.WriteLine("Dados salvos com sucesso (Upload).");
         }
 
         // + download(): void - Fazer a carga dos dados ao executar a aplicação
         public void Download()
-        {
-            // Carrega Usuários
-            if (File.Exists(USUARIOS_FILE))
-            {
-                string jsonUsuarios = File.ReadAllText(USUARIOS_FILE);
-                Usuarios = JsonSerializer.Deserialize<List<Usuario>>(jsonUsuarios);
-                Console.WriteLine($"Carga de {Usuarios.Count} usuários realizada.");
-            }
+        {  
+            Usuarios.Clear();
+            Ambientes.Clear();
 
-            // Carrega Ambientes
-            if (File.Exists(AMBIENTES_FILE))
+            using (var conn = new SqlConnection(CONNECTION_STRING))
             {
-                string jsonAmbientes = File.ReadAllText(AMBIENTES_FILE);
-                Ambientes = JsonSerializer.Deserialize<List<Ambiente>>(jsonAmbientes);
-                Console.WriteLine($"Carga de {Ambientes.Count} ambientes realizada.");
+                conn.Open();
+
+                // Carrega usuários
+                var cmdUsuarios = new SqlCommand("SELECT Id, Nome FROM Usuarios", conn);
+                using (var reader = cmdUsuarios.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Usuarios.Add(new Usuario(reader.GetInt32(0), reader.GetString(1)));
+                    }
+                }
+
+                // Carrega ambientes
+                var cmdAmbientes = new SqlCommand("SELECT Id, Nome FROM Ambientes", conn);
+                using (var reader = cmdAmbientes.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Ambientes.Add(new Ambiente(reader.GetInt32(0), reader.GetString(1)));
+                    }
+                }
             }
         }
     }

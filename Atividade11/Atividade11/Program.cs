@@ -6,10 +6,12 @@ namespace Atividade11
 {
     class Program
     {
-        static void Main()
+        static async Task Main()
         {
             // 1. Instancia o objeto de cadastro
             Cadastro cadastro = new Cadastro();
+            HttpClient httpClient = new HttpClient();
+            TTLockClient lockClient = new TTLockClient(httpClient, "05eb88a940484bd08e8f2f263e56eb2b", "8977e54ba82a23a016db74f4504f6b2d", "", "ifspcbtadsedd@gmail.com", "23e4b3eb0ac3ae12d4f9e13372b49cda");
 
             // 2. Fazer a carga dos dados ao executar a aplicação (download)
             cadastro.Download();
@@ -30,6 +32,7 @@ namespace Atividade11
                 Console.WriteLine("8. Revogar permissão de acesso");
                 Console.WriteLine("9. Registrar acesso");
                 Console.WriteLine("10. Consultar logs de acesso");
+                Console.WriteLine("11. Desbloquear trava");
                 Console.Write("\nOpção: ");
 
                 if (!int.TryParse(Console.ReadLine(), out opc))
@@ -191,7 +194,21 @@ namespace Atividade11
                                 Console.WriteLine(log);
 
                             break;
+                        case 11:
+                            lockClient._accessToken = await lockClient.GerarAccessToken();
+                            int lockId = 17097086;
 
+                            bool isUnlocked = await lockClient.UnlockAsync(lockId);
+
+                            if (isUnlocked)
+                            {
+                                Console.WriteLine("Trava desbloqueada com sucesso");
+                            } else
+                            {
+                                Console.WriteLine("A trava não foi desbloqueada com sucesso");
+                            }
+
+                            break;
                         case 0: // Sair
                             // Realizar a persistência dos dados quando a aplicação for encerrada (upload)
                             cadastro.Upload();
@@ -214,5 +231,6 @@ namespace Atividade11
             }
             while (opc != 0);
         }
+
     }
 }
